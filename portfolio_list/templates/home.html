@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}  <!--  use this before you get files from your static folder -->
+
+<!-- <div class="row justify-content-center my-3">
+	<div class="col-5">
+		<h1 class="text-center mb-5">Ebi's Portfolio</h1>
+		<div class="port-image">
+			<img src="{% static 'ebi.jpg' %}" class="rounded mx-auto d-block" height=250 width=200>
+		</div>
+	</div>
+</div>
+<br> -->
+
+<header class="masthead bg-dark text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{% static 'ebi2.jpg' %}">
+                <!-- Masthead Heading-->
+                <h2 class="masthead-heading mb-0">Ebi's Portfolio</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <!-- <p class="masthead-heading mb-0 font-weight-light mb-0">Bachelor of Science - Computer Science</p>
+                <br> -->
+                <p class="masthead-subheading font-weight-light mb-0">Web Developer - Machine Learning Engineer</p>
+            </div>
+</header>
+
+<section class="page-section projects" id="projects">
+	<h2 class="page-section-heading text-white text-center text-uppercase mb-0">Projects</h2>
+		<div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+	<hr>
+	<div class="row">
+		{% for project in projects %}
+		<!-- <div class="col-lg-4 col-md-6">
+
+		{% if project.url %}
+		<a href="{{ project.url }}">
+			<img src="{{ project.image.url }}" class="img-fluid mb-2" height=300, width=300>
+		</a>
+		{% else %}
+
+		<img src="{{ project.image.url }}" class="img-fluid mb-2" height=300, width=300>
+
+		<br>
+		{% endif %}
+		<h3>{{ project.title }}</h3>
+		<p>{{ project.description }}</p> -->
+		
+		<div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+			<div class="card text-center">
+				<img src="{{ project.image.url }}" class="card-img-top">
+				<div class="card-header">
+					<h4>{{ project.title }}</h4>
+				</div>
+				<div class="card-body">
+					<p class="card-text">{{ project.description }}</p>
+					<a href="{{ project.url }}" class="btn btn-primary">Open</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+
+<!-- About section -->
+<section class="page-section bg-dark text-white mb-0" id="about">
+ 	<div class="container">
+ 		<h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+
+		<div class="row justify-content-center">
+            <div class="col-lg-4 ms-auto"><p class="lead">Hi my name is Ebiegberi Domo Domo-Spiff I am a Computer Science graduate that specializes in web development. I am a fullstack developer that works with Django, Postgres and React.</p></div>
+            <div class="col-lg-4 me-auto"><p class="lead">I am also intrested in Machine Learning with MatLab and Python using tools like Pandas, Numpy, Scikit Learn, Matplotlib and Tensorflow. To know more about me you can check out my resume below.</p></div>
+        </div>
+        <!-- About Section Button-->
+        <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-light" href="{% static 'new_resume.pdf' %}" target="_blank">
+                <i class="fas fa-download me-2"></i>
+                Resume!
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills section -->
+<section class="page-section bg-dark text-white mb-0" id="skills">
+ 	<div class="container">
+ 		<h2 class="page-section-heading text-center text-uppercase text-white">Skills</h2>
+	        <!-- Icon Divider-->
+	        <div class="divider-custom divider-light">
+	            <div class="divider-custom-line"></div>
+	            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+	            <div class="divider-custom-line"></div>
+	        </div>
+	        <br>
+	        <div class="custom-icon">
+	        	<div class="skill-icon">
+	        		<i class="fab fa-html5 fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>HTML</p>
+	        	</div>
+	        	<div class="skill-icon">
+	        		<i class="fab fa-css3-alt fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>CSS</p>
+	        	</div>
+	        	<div class="skill-icon">
+	        		<i class="fab fa-js-square fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>JavaScript</p>
+	        	</div>
+	        	<div class="skill-icon">
+	        		<i class="fab fa-react fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>React</p>
+	        	</div>
+	        </div>
+	        <div class="custom-icon2">
+	        	<div class="skill-icon">
+	        		<i class="fab fa-python fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>Python</p>
+	        	</div>
+	        	<div class="skill-icon">
+	        		<i class="fab fa-git fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>Git</p>
+	        	</div>
+	        	<div class="skill-icon">
+	        		<i class="fas fa-laptop-code fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>Machine Learning</p>
+	        	</div>
+	        	<div class="skill-icon">
+	        		<i class="fas fa-database fa-5x"></i>
+	        		<br>
+	        		<br>
+	        		<p>SQL</p>
+	        	</div>
+	        </div>
+    </div>
+</section>
+
+{% endblock %}

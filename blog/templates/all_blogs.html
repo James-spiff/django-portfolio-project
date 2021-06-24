@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="blog-title">
+	<h2 id="blogtitle" class="font-weight-bold text-white text-center">Blog</h2>
+	<br>
+	<br>
+	<br>
+
+	<h3 class="text-center text-white mb-5">Ebi has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3>  <!-- blog{{ blogs.count|pluralize }} makes blog plural (blogs) if the count is greater than 1 -->
+	<br>
+	<br>
+</div>
+
+{% for blog in blogs %}
+
+	<!-- <div class="col-md-10">
+		<a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+		<h5>{{ blog.date|date:'M d Y'|upper }}</h5> --> <!-- date:'M d Y'|upper formats the date and changes the text to uppercase -->
+		<!-- <h4>{{ blog.description|striptags|truncatechars:100 }}</h4> --> <!-- safe allows you to use html tags in your displayed text while striptags removes them. truncatechars shortens the character length to the number specified -->
+	<div class="card bg-light mb-3">
+	 	<div class="card-header">
+	  		<h3>{{ blog.title }}</h3>
+	  	</div>
+		<div class="card-body">			
+			<h4 class="card-text">{{ blog.description|striptags|truncatechars:100 }}</h4>
+			<a href="{% url 'blog:detail' blog.id %}" class="btn btn-primary">Open</a>
+		</div>
+		<div class="card-footer text-muted">
+			<h5>{{ blog.date|date:'M d Y'|upper }}</h5>
+		</div>
+	</div>
+	<br>
+
+{% endfor %}
+
+{% endblock %}
