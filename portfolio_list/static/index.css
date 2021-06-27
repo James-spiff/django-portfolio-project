@@ -13,6 +13,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
+    display: grid;
     background-color: #1a252f;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -47,7 +48,7 @@ body {
 .page-section .page-section-heading {
   font-size: 2.25rem;
   line-height: 2rem;
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-bottom: 1rem;
 }
 
@@ -156,7 +157,9 @@ body {
 .custom-icon {
     margin: 1.25rem 0 1.5rem;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px;
     padding-top: 1rem;
     padding-bottom: 1rem;
     justify-content: center;
@@ -166,7 +169,6 @@ body {
 
 
 .custom-icon .skill-icon {
-    padding-right: 5rem;
     text-align: center;
 }
 
@@ -174,7 +176,9 @@ body {
 .custom-icon2 {
     margin: 1.25rem 0 1.5rem;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px;
     padding-top: 1rem;
     padding-bottom: 1rem;
     justify-content: center;
@@ -184,6 +188,5 @@ body {
 
 
 .custom-icon2 .skill-icon {
-    padding-right: 4rem;
     text-align: center;
 }
