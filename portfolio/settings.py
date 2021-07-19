@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'portfolio_list',
+    'django_hide',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hide.middleware.CSRFHIDEMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -124,6 +127,45 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+#Security tests
+SECURE_HSTS_SECONDS = 3600  #increase the time 3600 = 1hour
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True   #to include subdomains
+
+#CSP
+CSP_DEFAULT_SRC = ["'self'", '*.mozilla.net', '*.mozilla.org', '*.mozilla.com']
+CSP_STYLE_SRC = CSP_DEFAULT_SRC + ["'self'", "stackpath.bootstrapcdn.com"]
+
+CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + ["'self'", 
+    "ajax.cloudflare.com", 
+    "static.cloudflareinsights.com", 
+    "www.google-analytics.com", 
+    "ssl.google-analytics.com", 
+    "cdn.ampproject.org", 
+    "www.googletagservices.com", 
+    "use.fontawesome.com",
+    "pagead2.googlesyndication.com"]
+   
+# images from our domain and other domains
+CSP_IMG_SRC = CSP_DEFAULT_SRC + ["'self'", 
+    "www.google-analytics.com", 
+    "raw.githubusercontent.com", 
+    "googleads.g.doubleclick.net"]
+
+# loading manifest, workers, frames, etc
+CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com')
+CSP_CONNECT_SRC = ("'self'",  
+    "www.google-analytics.com" )
+CSP_OBJECT_SRC = ("'self'", )
+CSP_BASE_URI = ("'self'", )
+CSP_FRAME_ANCESTORS = ("'self'", )
+CSP_FORM_ACTION = ("'self'", )
+CSP_INCLUDE_NONCE_IN = ('script-src', )
+CSP_MANIFEST_SRC = ("'self'", )
+CSP_WORKER_SRC = ("'self'", )
+CSP_MEDIA_SRC = ("'self'", )
+
 
 try:
     from .local_settings import *
